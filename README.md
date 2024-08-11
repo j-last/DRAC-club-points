@@ -2,8 +2,8 @@ I started this project bespoke for my dad to help him calculate the points for D
 
 --- LEARNING OUTCOMES ---
 - Good experience in creating a bespoke software for someone, having frequent discussions about how he wants it to work and then implementing these features as described.
-- This was also my first experience working with JSON files, so I leant a lot about them and thoight back to past projects where using these would have been much easier...
-- This was my first experience web scraping something that wasn't easy to web scrape (I had only had experience scraping a "scrapeable quotes" website before this) - but I figured it out without using a tutorial and was amazed when I finally got it working!
+- This was my first experience working with JSON files, so I leant a lot about them and thoight back to past projects where using these would have been much easier...
+- This was also my first experience web scraping something that wasn't easy to web scrape (I had only had experience scraping a "scrapeable quotes" website before this) - but I figured it out without using a tutorial and was amazed when I finally got it working!
 - I also learnt a lot about the importance of input validation, as I knew my dad would frequently make typos, so had to make sure these didn't crash the system. Also when we started using it I hasn't anticipated people having things like double barreled names, so next time I should think about all possibilities and anomalies that may arise before I finish a project.
 
 
