@@ -1,0 +1,10 @@
+-----------
+WU35
+CLUB 50
+-----------
+TOTAL 1
+-----------
+PARKRUNS 1
+-----------
+RACES:
+idk, parkrun, 1 point

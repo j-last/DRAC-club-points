@@ -1,6 +1,6 @@
 import time
 import datetime
-from functions.functions import *
+from functions import *
 import shutil
 from bs4 import BeautifulSoup as bs
 import requests
@@ -11,19 +11,24 @@ timeFormat = "%H.%M.%S"
 def mainloop():
     while True:
         print("""------------------------------------------------------
-A: Enter race results
-L: Enter link of TotalRaceTiming Results
-P: Add Parkruns
+T: TotalRaceTiming Link
+P: Parkrun Website
+              
+R: Manual race results
+A: Add parkruns manually
+              
 S: Produce Summary Sheet
 E: Make a Backup & Exit
 ------------------------------------------------------""")
         action = input().upper()
-        if action == "A":
+        if action == "R":
             manualRaceEntry()
-        elif action == "L":
+        elif action == "T":
             urlRaceEntry()
-        elif action == "P":
+        elif action == "A":
             addParkruns()
+        elif action == "P":
+            addParkrunsAuto()
         elif action == "S":
             summarySheet()
         elif action == "E":
@@ -31,19 +36,13 @@ E: Make a Backup & Exit
             break
         else: print("Not a valid option. Please try again.")
 
-# MENU OPTION A (Manual Race Results)
+# MENU OPTION R (Manual Race Results)
 def manualRaceEntry():
     raceName = input("Race Name: ")
     if raceName == "": return None
 
-    validDistances = ["5k", "5mi", "10k", "10mi", "half", "mara"]
-    valid = False
-    while not valid:
-        raceDist = input("Distance: ")
-        if raceDist == "": return None
-        elif raceDist in validDistances: valid = True
-        elif raceDist.isnumeric(): valid = True
-        else: print("This is not a valid distance or points value.")
+    raceDist = getDistFromUser()
+    if raceDist == "": return None
 
     raceDate = input("Date: ")
     if raceDate == "": return None
@@ -51,55 +50,30 @@ def manualRaceEntry():
     while True:
         print("------------------------------------------------------")
         print(f"{raceName.upper()} {raceDist.upper()} - {raceDate}")
-        valid = False
-        while not valid:
-            name = input("Name: ")
-            if name == "": return None
-            try:
-                ageCat = getAgeCat(name)
-                valid = True
-            except FileNotFoundError:
-                newPerson = input("This person doesn't exist yet. Create a file for them? (y/n) ")
-                if newPerson.lower() == "y": 
-                    createNewPerson(name)
-                    ageCat = getAgeCat(name)
-                    valid = True
 
+        name = getNameFromUser()
+        if name == "": return None
+
+        ageCat = getAgeCat(name)
         print(ageCat)
 
         valid = False
-        if not raceDist.isnumeric():
-            while not valid:
-                raceTime = input("Time: ")
-                if raceTime.count(".") == 1:
-                    raceTime = "0." + raceTime
-                try:
-                    raceTime = time.strptime(raceTime, timeFormat)
-                    valid = True
-                except ValueError:
-                    print(f"Invalid time format '{raceTime}'. Please try again.")
-
-            points = calcPoints(raceTime, raceDist, ageCat)
-            addRaceToFile(name, raceName, raceDist, raceDate, time.strftime(timeFormat, raceTime), points)
-        else:
+        if raceDist.isnumeric():
             points = int(raceDist)
             addRaceToFile(name, raceName, raceDist, raceDate, "", points)
+        
+        else:
+            raceTime = getTimeFromUser()
+            if raceTime == "": return None
+                
+            points = calcPoints(raceTime, raceDist, ageCat)
+            addRaceToFile(name, raceName, raceDist, raceDate, time.strftime(timeFormat, raceTime), points)
 
 # MENU OPTION L (Automatic TotalRaceTiming Results)
 def urlRaceEntry():
-    raceName = input("Race Name: ")
-    if raceName == "": return None
+    raceName, raceDist, raceDate = getRaceDetailsFromUser()
 
-    validDistances = ["5k", "5mi", "10k", "10mi", "half", "mara"]
-    valid = False
-    while not valid:
-        raceDist = input("Distance: ")
-        if raceDist == "": return None
-        elif raceDist in validDistances: valid = True
-        else: print("This is not a valid distance.")
-
-    raceDate = input("Date: ")
-    if raceDate == "": return None
+    if raceName == "" or raceDist == "" or raceDate == "": return None
 
     url = input("Copy and paste the totalRaceTiming URL: ")
     if url == "": return None
@@ -109,6 +83,7 @@ def urlRaceEntry():
     runners = soup.find("tbody") # gets all runners
 
     notAdded = []
+    runnersAdded = 0
     for runner in runners:
         runnerstring : str = runner.decode_contents()
         if "<td>Dereham Runners AC</td>" in runnerstring:
@@ -117,19 +92,33 @@ def urlRaceEntry():
             raceTime = runnerstring[-2][2:-8]
             try:
                 ageCat = getAgeCat(name)
-                valid = True
             except FileNotFoundError:
                 notAdded.append((name, raceTime))
                 continue
-            print(raceTime)
+            print(name.upper() + "," + ageCat + "," + raceTime)
             raceTime = time.strptime(raceTime, "%H:%M:%S")
             points = calcPoints(raceTime, raceDist, ageCat)
 
             addRaceToFile(name, raceName, raceDist, raceDate, time.strftime(timeFormat, raceTime), points)
-    
+
+            runnersAdded += 1
+            print("")
     print("NOT ADDED: ")
-    for person in notAdded:
-        print(person)
+    for name, raceTime in notAdded:
+        print("")
+        print(f"{name.upper()} ({raceTime}) not found. Enter their file name below.")
+        name = getNameFromUser()
+        if name == "":
+            print("No new race added.")
+        else:
+            ageCat = getAgeCat(name)
+            print(name.upper() + "," + ageCat + "," + raceTime)
+            raceTime = time.strptime(raceTime, "%H:%M:%S")
+            points = calcPoints(raceTime, raceDist, ageCat)
+            addRaceToFile(name, raceName, raceDist, raceDate, time.strftime(timeFormat, raceTime), points)
+            runnersAdded += 1
+    print("")
+    print(f"{runnersAdded} runners have been added.")
         
 # MENU OPTION P (Parkruns)
 def addParkruns():
@@ -141,19 +130,61 @@ def addParkruns():
         print(f"PARKRUN - {raceDate}")
         valid = False
         while not valid:
-            name = input("Name: ")
+            name = getNameFromUser()
             if name == "": return None
-            try:
-                ageCat = getAgeCat(name)
-                valid = True
-            except FileNotFoundError:
-                newPerson = input("This person doesn't exist yet. Create a file for them? (y/n) ")
-                if newPerson.lower() == "y": 
-                    createNewPerson(name)
-                    ageCat = getAgeCat(name)
-                    valid = True
         
         addRaceToFile(name, "parkrun", "", raceDate, "", 1)
+
+# MENU OPTION C (Parkruns - auto)
+def addParkrunsAuto():
+    raceDate = input("Date: ")
+    if raceDate == "": return None
+
+    notAdded = []
+    web_text = input("CTRL+A then CTRL+C on the consolodated report website and CTRL+V here: ")
+    endindex = web_text.find("Dereham Runners AC")
+
+    runnersAdded = 0
+    while endindex != -1:
+        index = endindex
+        spacesfound = 0
+        while spacesfound != 2:
+            index -= 1
+            if web_text[index] == "	":
+                spacesfound += 1
+        name = web_text[index:endindex].strip()
+        name = name.split(" ")
+        if len(name) >= 2:
+            newname = name[0]
+            for i in range(1, len(name)):
+                name[i] = name[i].lower().capitalize()
+                newname += " " + name[i]
+            name = newname
+            try:
+                addRaceToFile(name, "parkrun", "", raceDate, "", 1)
+                runnersAdded += 1
+            except FileNotFoundError:
+                notAdded.append(name)
+
+        web_text = web_text[endindex + 1 :]
+        endindex = web_text.find("Dereham Runners AC")
+        print("")
+    
+    print("NOT ADDED: ")
+    for name in notAdded:
+        print("")
+        print(f"{name.upper()} not found. Enter their file name below.")
+        name = getNameFromUser()
+        if name == "":
+            print("No new parkrun added.")
+        else:
+            ageCat = getAgeCat(name)
+            print(name.upper() + ", " + ageCat)
+            addRaceToFile(name, "parkrun", "", raceDate, "", 1)
+            runnersAdded += 1
+    
+    print("")
+    print(f"{runnersAdded} runners have been added.")
 
 # MENU OPTION S (Summary Sheet)
 def summarySheet():
@@ -166,6 +197,7 @@ def summarySheet():
         points = int(fileLines[4].strip()[6:])
         club = fileLines[2].strip()
         f.close()
+
         if club == "CLUB 50":
             for i in range(len(club50List)):
                 item = club50List[i]
@@ -176,6 +208,7 @@ def summarySheet():
                     club50List.append(f"{name[:-4]} - {points}\n")
             if len(club50List) == 0:
                 club50List.append(f"{name[:-4]} - {points}\n")
+
         elif club == "CLUB 100":
             for i in range(len(club100List)):
                 item = club100List[i]
@@ -191,8 +224,8 @@ def summarySheet():
     if not os.path.exists(os.path.join("Summary Sheets", dateForFile)):
         os.makedirs(os.path.join("Summary Sheets", dateForFile))
         
-    summary50 = open(os.path.join("Summary Sheets", dateForFile, " CLUB 50" + ".txt"), "w")
-    summary100 = open(os.path.join("Summary Sheets", dateForFile, " CLUB 100" + ".txt"), "w")
+    summary50 = open(os.path.join("Summary Sheets", dateForFile, "CLUB 50" + ".txt"), "w")
+    summary100 = open(os.path.join("Summary Sheets", dateForFile, "CLUB 100" + ".txt"), "w")
     summary50.writelines(club50List)
     summary100.writelines(club100List)
     summary50.close()

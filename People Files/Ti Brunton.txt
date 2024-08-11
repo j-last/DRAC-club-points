@@ -2,8 +2,10 @@
 MU40
 CLUB 50
 -----------
-TOTAL 31
+TOTAL 36
 -----------
-PARKRUNS 3
+PARKRUNS 4
 -----------
 RACES:
+26/07/24, Worstead 5mi, 00.39.20, 4 points
+idk, parkrun, 1 point

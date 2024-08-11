@@ -2,8 +2,16 @@
 W55-59
 CLUB 50
 -----------
-TOTAL 35
+TOTAL 85
 -----------
-PARKRUNS 7
+PARKRUNS 9
 -----------
 RACES:
+20/07/24, parkrun, 1 point
+13/07/24, parkrun, 1 point
+26/07/24, Worstead 5mi, 00.38.20, 8 points
+26/07/24, Worstead 5mi, 00.38.20, 8 points
+26/07/24, Worstead 5mi, 00.38.20, 8 points
+26/07/24, Worstead 5mi, 00.38.20, 8 points
+26/07/24, Worstead 5mi, 00.38.20, 8 points
+26/07/24, Worstead 5mi, 00.38.20, 8 points

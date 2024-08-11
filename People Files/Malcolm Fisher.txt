@@ -2,8 +2,14 @@
 M45-49
 CLUB 50
 -----------
-TOTAL 36
+TOTAL 60
 -----------
 PARKRUNS 8
 -----------
 RACES:
+26/07/24, Worstead 5mi, 01.15.21, 4 points
+26/07/24, Worstead 5mi, 01.15.21, 4 points
+26/07/24, Worstead 5mi, 01.15.21, 4 points
+26/07/24, Worstead 5mi, 01.15.21, 4 points
+26/07/24, Worstead 5mi, 01.15.21, 4 points
+26/07/24, Worstead 5mi, 01.15.21, 4 points

@@ -2,8 +2,15 @@
 M55-59
 CLUB 50
 -----------
-TOTAL 7
+TOTAL 50
 -----------
 PARKRUNS 0
 -----------
 RACES:
+idk, Aylsham 10k, 00.47.38, 7 points
+26/07/24, Worstead 5mi, 00.38.55, 6 points
+26/07/24, Worstead 5mi, 00.38.55, 6 points
+26/07/24, Worstead 5mi, 00.38.55, 6 points
+26/07/24, Worstead 5mi, 00.38.55, 6 points
+26/07/24, Worstead 5mi, 00.38.55, 6 points
+26/07/24, Worstead 5mi, 00.38.55, 6 points

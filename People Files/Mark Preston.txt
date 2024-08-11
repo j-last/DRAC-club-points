@@ -2,8 +2,15 @@
 M45-49
 CLUB 50
 -----------
-TOTAL 42
+TOTAL 70
 -----------
 PARKRUNS 10
 -----------
 RACES:
+idk, Aylsham 10k, 01.12.31, 4 points
+26/07/24, Worstead 5mi, 00.45.29, 4 points
+26/07/24, Worstead 5mi, 00.45.29, 4 points
+26/07/24, Worstead 5mi, 00.45.29, 4 points
+26/07/24, Worstead 5mi, 00.45.29, 4 points
+26/07/24, Worstead 5mi, 00.45.29, 4 points
+26/07/24, Worstead 5mi, 00.45.29, 4 points

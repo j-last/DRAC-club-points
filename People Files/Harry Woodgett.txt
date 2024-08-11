@@ -2,8 +2,13 @@
 MU40
 CLUB 50
 -----------
-TOTAL 23
+TOTAL 28
 -----------
-PARKRUNS 5
+PARKRUNS 10
 -----------
 RACES:
+test after something went wrong, parkrun, 1 point
+think ive fixed, parkrun, 1 point
+yeah this is fixed, parkrun, 1 point
+yep done :), parkrun, 1 point
+idk, parkrun, 1 point

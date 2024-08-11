@@ -2,8 +2,19 @@
 M60-64
 CLUB 50
 -----------
-TOTAL 30
+TOTAL 77
 -----------
-PARKRUNS 5
+PARKRUNS 10
 -----------
 RACES:
+20/07/24, parkrun, 1 point
+13/07/24, parkrun, 1 point
+test after something went wrong, parkrun, 1 point
+think ive fixed, parkrun, 1 point
+yeah this is fixed, parkrun, 1 point
+26/07/24, Worstead 5mi, 00.37.32, 7 points
+26/07/24, Worstead 5mi, 00.37.32, 7 points
+26/07/24, Worstead 5mi, 00.37.32, 7 points
+26/07/24, Worstead 5mi, 00.37.32, 7 points
+26/07/24, Worstead 5mi, 00.37.32, 7 points
+26/07/24, Worstead 5mi, 00.37.32, 7 points
