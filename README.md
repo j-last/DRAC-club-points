@@ -3,6 +3,7 @@ I started this project bespoke for my dad to help him calculate the points for D
 --- LEARNING OUTCOMES ---
 - Good experience in creating a bespoke software for someone, having frequent discussions about how he wants it to work and then implementing these features as described.
 - This was also my first experience working with JSON files, so I leant a lot about them and thoight back to past projects where using these would have been much easier...
+- This was my first experience web scraping something that wasn't easy to web scrape (I had only had experience scraping a "scrapeable quotes" website before this) - but I figured it out without using a tutorial and was amazed when I finally got it working!
 - I also learnt a lot about the importance of input validation, as I knew my dad would frequently make typos, so had to make sure these didn't crash the system. Also when we started using it I hasn't anticipated people having things like double barreled names, so next time I should think about all possibilities and anomalies that may arise before I finish a project.
 
 
@@ -17,3 +18,5 @@ Each person has their own 'profile' - a text file containing all of the races th
 Inputting a race is as easy as specifying the race name, date and distance. The software then asks you to input peoples names alongside their times.
 
 However, races with results on a TotalRaceTiming website (the company that times most races in norfolk) it is as easy as copy and pasting the URL of the race results. This web scrapes and automatically adds the correct amount of points to all Dereham Runners members based on the time they ran. This can also be done when adding parkruns (which are 1 point, up to 10 points total and for club 50 members only).
+
+All in all I'm very happy with how this turned out, as when I started this project I never thought I would go as far as having to web scrape race data! I think my dad is pleased as well as he now has to spend much less time calculating the points and no more lost data (due to instant saving and frequent backups!) - However I expect there will still be many improvements to come for this system in the future.
