@@ -2,8 +2,11 @@
 WU35
 CLUB 50
 -----------
-TOTAL 11
+TOTAL 17
 -----------
-PARKRUNS 7
+PARKRUNS 9
 -----------
 RACES:
+27/07/24, parkrun, 1 point
+18/08/24, Dereham 5k, 00.25.41, 4 points
+28/09/24, parkrun, 1 point

@@ -137,7 +137,7 @@ def createNewPerson(name):
                  "WU35", "W35-39", "W40-44", "W45-49", "W50-54", "W55-59", "W60-64", "W65+"]
     ageCat = ""
     while ageCat not in validAges:
-        ageCat = input("Age category: ")
+        ageCat = input("Age category: ").upper()
 
     club = ""
     while club != "50" and club != "100":

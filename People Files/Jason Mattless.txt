@@ -2,12 +2,14 @@
 M50-54
 CLUB 100
 -----------
-TOTAL 108
+TOTAL 116
 -----------
 RACES:
+21/07/24, Flying 5k, 00.19.32, 7 points
 26/07/24, Worstead 5mi, 00.32.29, 7 points
-26/07/24, Worstead 5mi, 00.32.29, 7 points
-26/07/24, Worstead 5mi, 00.32.29, 7 points
-26/07/24, Worstead 5mi, 00.32.29, 7 points
-26/07/24, Worstead 5mi, 00.32.29, 7 points
-26/07/24, Worstead 5mi, 00.32.29, 7 points
+18/08/24, Dereham 5k, 00.19.00, 8 points
+22/08/24, DRAC 10k Handicap, 4 points
+01/09/24, Wissey 10mi, 01.14.15, 6 points
+08/09/24, Great North Run half, 01.28.45, 7 points
+29/09/24, Bure valley 10mi, 01.07.31, 7 points
+20/10/24, DRAC GP 10 Mile, 4 points

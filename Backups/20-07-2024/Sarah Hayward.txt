@@ -2,8 +2,9 @@
 W55-59
 CLUB 50
 -----------
-TOTAL 30
+TOTAL 38
 -----------
 PARKRUNS 0
 -----------
 RACES:
+14/07/24, Humpty Dumpty 10k, 00.48.42, 8 points

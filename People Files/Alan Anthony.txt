@@ -2,8 +2,10 @@
 M55-59
 CLUB 50
 -----------
-TOTAL 24
+TOTAL 32
 -----------
 PARKRUNS 0
 -----------
 RACES:
+08/09/24, Run Norwich #24 10k, 00.59.30, 4 points
+29/09/24, Run Sandringham 10k, 00.56.57, 4 points

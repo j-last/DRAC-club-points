@@ -1,3 +1,4 @@
+
 import time
 import datetime
 from functions import *
@@ -15,7 +16,7 @@ T: TotalRaceTiming Link
 P: Parkrun Website
               
 R: Manual race results
-A: Add parkruns manually
+M: Add parkruns manually
               
 S: Produce Summary Sheet
 E: Make a Backup & Exit
@@ -25,7 +26,7 @@ E: Make a Backup & Exit
             manualRaceEntry()
         elif action == "T":
             urlRaceEntry()
-        elif action == "A":
+        elif action == "M":
             addParkruns()
         elif action == "P":
             addParkrunsAuto()
@@ -69,7 +70,7 @@ def manualRaceEntry():
             points = calcPoints(raceTime, raceDist, ageCat)
             addRaceToFile(name, raceName, raceDist, raceDate, time.strftime(timeFormat, raceTime), points)
 
-# MENU OPTION L (Automatic TotalRaceTiming Results)
+# MENU OPTION T (Automatic TotalRaceTiming Results)
 def urlRaceEntry():
     raceName, raceDist, raceDate = getRaceDetailsFromUser()
 
@@ -80,7 +81,7 @@ def urlRaceEntry():
 
     page = requests.get(url)
     soup = bs(page.content, "html.parser")
-    runners = soup.find("tbody") # gets all runners
+    runners = soup.find("tbody") # gets all 
 
     notAdded = []
     runnersAdded = 0
@@ -120,7 +121,7 @@ def urlRaceEntry():
     print("")
     print(f"{runnersAdded} runners have been added.")
         
-# MENU OPTION P (Parkruns)
+# MENU OPTION M (Parkruns)
 def addParkruns():
     raceDate = input("Date: ")
     if raceDate == "": return None
@@ -132,10 +133,11 @@ def addParkruns():
         while not valid:
             name = getNameFromUser()
             if name == "": return None
+            valid = True
         
         addRaceToFile(name, "parkrun", "", raceDate, "", 1)
 
-# MENU OPTION C (Parkruns - auto)
+# MENU OPTION P (Parkruns - auto)
 def addParkrunsAuto():
     raceDate = input("Date: ")
     if raceDate == "": return None
@@ -192,6 +194,7 @@ def summarySheet():
     club100List = []
     
     for name in os.listdir("People Files"):
+        print(name)
         f = open(os.path.join("People Files", name), "r")
         fileLines = f.readlines()
         points = int(fileLines[4].strip()[6:])
@@ -247,3 +250,4 @@ def backup():
     print(f"Backup made for {dateForFile}")
 
 mainloop()
+

@@ -2,8 +2,13 @@
 M50-54
 CLUB 50
 -----------
-TOTAL 4
+TOTAL 24
 -----------
 PARKRUNS 0
 -----------
 RACES:
+02/08/24, Reepham 10k, 00.53.24, 4 points
+22/08/24, DRAC 10k Handicap, 4 points
+08/09/24, Run Norwich #24 10k, 00.53.15, 4 points
+22/09/24, Marriots Way 10k, 00.58.36, 4 points
+20/10/24, DRAC GP 10 Mile, 4 points

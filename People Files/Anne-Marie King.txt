@@ -2,8 +2,9 @@
 W40-44
 CLUB 50
 -----------
-TOTAL 4
+TOTAL 19
 -----------
 PARKRUNS 0
 -----------
 RACES:
+July, Boudicca Way Ultra Marathon, 15 points

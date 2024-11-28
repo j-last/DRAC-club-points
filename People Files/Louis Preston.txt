@@ -2,8 +2,10 @@
 MU40
 CLUB 50
 -----------
-TOTAL 51
+TOTAL 53
 -----------
-PARKRUNS 7
+PARKRUNS 9
 -----------
 RACES:
+17/08/24, parkrun, 1 point
+05/10/24, parkrun, 1 point

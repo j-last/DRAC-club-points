@@ -2,13 +2,14 @@
 W60-64
 CLUB 50
 -----------
-TOTAL 10
+TOTAL 14
 -----------
 PARKRUNS 10
 -----------
 RACES:
-test after something went wrong, parkrun, 1 point
-think ive fixed, parkrun, 1 point
-yeah this is fixed, parkrun, 1 point
-yep done :), parkrun, 1 point
-idk, parkrun, 1 point
+20/07/24, parkrun, 1 point
+03/08/24, parkrun, 1 point
+09/08/24, Dino Dash 5k, 00.42.09, 4 points
+17/08/24, parkrun, 1 point
+31/08/24, parkrun, 1 point
+07/09/24, parkrun, 1 point

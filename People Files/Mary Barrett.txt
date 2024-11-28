@@ -2,8 +2,10 @@
 W65+
 CLUB 50
 -----------
-TOTAL 57
+TOTAL 65
 -----------
 PARKRUNS 10
 -----------
 RACES:
+02/08/24, Reepham 10k, 01.17.54, 4 points
+22/08/24, DRAC 10k Handicap, 4 points

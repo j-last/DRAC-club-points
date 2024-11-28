@@ -2,8 +2,10 @@
 M45-49
 CLUB 50
 -----------
-TOTAL 8
+TOTAL 10
 -----------
-PARKRUNS 0
+PARKRUNS 2
 -----------
 RACES:
+20/07/24, parkrun, 1 point
+26/10/24, parkrun, 1 point

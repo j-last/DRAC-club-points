@@ -2,13 +2,9 @@
 W45-49
 CLUB 100
 -----------
-TOTAL 100
+TOTAL 95
 -----------
 RACES:
-idk, Aylsham 10k, 01.12.31, 4 points
 26/07/24, Worstead 5mi, 01.00.06, 4 points
-26/07/24, Worstead 5mi, 01.00.06, 4 points
-26/07/24, Worstead 5mi, 01.00.06, 4 points
-26/07/24, Worstead 5mi, 01.00.06, 4 points
-26/07/24, Worstead 5mi, 01.00.06, 4 points
-26/07/24, Worstead 5mi, 01.00.06, 4 points
+10/08/24, RUN SANDRINGHAM 24HR, 4 points
+28/09/24, Chiltern 50K Ultra, 15 points

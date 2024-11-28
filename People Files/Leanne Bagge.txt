@@ -2,8 +2,10 @@
 W40-44
 CLUB 50
 -----------
-TOTAL 27
+TOTAL 40
 -----------
 PARKRUNS 3
 -----------
 RACES:
+31/07/24, Run Snetterton 10k, 00.47.48, 6 points
+20/10/24, Abingdon mara, 03.40.58, 7 points

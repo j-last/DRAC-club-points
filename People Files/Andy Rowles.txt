@@ -2,6 +2,11 @@
 M60-64
 CLUB 100
 -----------
-TOTAL 88
+TOTAL 117
 -----------
 RACES:
+22/08/24, DRAC 10k Handicap, 4 points
+01/09/24, Harling 10k, 00.53.10, 6 points
+08/09/24, Run Norwich #24 10k, 00.51.27, 6 points
+22/09/24, Thompson 10k, 00.52.14, 6 points
+29/09/24, Run Sandringham 10k, 00.49.40, 7 points

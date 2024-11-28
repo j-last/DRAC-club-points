@@ -2,8 +2,15 @@
 W40-44
 CLUB 50
 -----------
-TOTAL 48
+TOTAL 64
 -----------
-PARKRUNS 4
+PARKRUNS 9
 -----------
 RACES:
+20/07/24, parkrun, 1 point
+02/08/24, Reepham 10k, 00.44.27, 7 points
+10/8/24, parkrun, 1 point
+28/09/24, parkrun, 1 point
+05/10/24, parkrun, 1 point
+13/10/24, Ryston XC 5k, 4 points
+26/10/24, parkrun, 1 point

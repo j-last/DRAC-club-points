@@ -2,8 +2,11 @@
 M60-64
 CLUB 50
 -----------
-TOTAL 29
+TOTAL 45
 -----------
 PARKRUNS 10
 -----------
 RACES:
+28/07/24, Outlaw Nottingham, 8 points
+22/08/24, DRAC 10k Handicap, 4 points
+20/10/24, DRAC GP 10 Mile, 4 points

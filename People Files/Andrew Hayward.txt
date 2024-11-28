@@ -2,15 +2,13 @@
 M55-59
 CLUB 50
 -----------
-TOTAL 50
+TOTAL 31
 -----------
 PARKRUNS 0
 -----------
 RACES:
-idk, Aylsham 10k, 00.47.38, 7 points
+14/07/24, Humpty Dumpty 10k, 00.59.23, 4 points
 26/07/24, Worstead 5mi, 00.38.55, 6 points
-26/07/24, Worstead 5mi, 00.38.55, 6 points
-26/07/24, Worstead 5mi, 00.38.55, 6 points
-26/07/24, Worstead 5mi, 00.38.55, 6 points
-26/07/24, Worstead 5mi, 00.38.55, 6 points
-26/07/24, Worstead 5mi, 00.38.55, 6 points
+22/09/24, Marriots Way 10k, 00.49.15, 6 points
+13/10/24, Felbigg Trail 10k, 00.54.55, 4 points
+20/10/24, DRAC GP 10 Mile, 4 points

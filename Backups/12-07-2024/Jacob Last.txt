@@ -2,11 +2,9 @@
 MU40
 CLUB 50
 -----------
-TOTAL 12
+TOTAL 7
 -----------
 PARKRUNS 0
 -----------
 RACES:
-13/02/16, Ryston XC , , 4 points
-12/01/24, Ryston XC , , 4 points
-12/12/23, Ryston XC, 4 points
+12/23/43, wroxham 5k, 00.18.26, 7 points

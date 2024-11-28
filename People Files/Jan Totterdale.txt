@@ -2,6 +2,12 @@
 W60-64
 CLUB 100
 -----------
-TOTAL 99
+TOTAL 132
 -----------
 RACES:
+14/07/24, Humpty Dumpty 10k, 01.01.27, 6 points
+02/08/24, Reepham 10k, 01.04.15, 6 points
+01/09/24, Harling 10k, 01.01.46, 6 points
+29/09/24, Bure valley 10mi, 01.37.39, 7 points
+06/10/24, Big Stampede Relay, 4 points
+20/10/24, DRAC GP 10 Mile, 4 points

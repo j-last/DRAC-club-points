@@ -2,8 +2,13 @@
 MU40
 CLUB 50
 -----------
-TOTAL 45
+TOTAL 62
 -----------
-PARKRUNS 6
+PARKRUNS 8
 -----------
 RACES:
+21/07/24, Flying 5k, 00.21.21, 5 points
+20/07/24, parkrun, 1 point
+18/08/24, Dereham 5k, 00.20.50, 6 points
+21/09/24, parkrun, 1 point
+13/10/24, Ryston XC, 4 points

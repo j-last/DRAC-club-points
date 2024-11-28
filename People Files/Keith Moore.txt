@@ -2,9 +2,16 @@
 M60-64
 CLUB 50
 -----------
-TOTAL 18
+TOTAL 19
 -----------
-PARKRUNS 0
+PARKRUNS 8
 -----------
 RACES:
-idk, Aylsham 10k, 00.49.28, 7 points
+10/8/24, parkrun, 1 point
+17/08/24, parkrun, 1 point
+31/08/24, parkrun, 1 point
+07/09/24, parkrun, 1 point
+28/09/24, parkrun, 1 point
+05/10/24, parkrun, 1 point
+12/10/24, parkrun, 1 point
+21/10/24, parkrun, 1 point

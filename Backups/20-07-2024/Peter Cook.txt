@@ -7,4 +7,4 @@ TOTAL 5
 PARKRUNS 5
 -----------
 RACES:
-20/07/24, parkrun, 1 point
+13/07/24, parkrun, 1 point

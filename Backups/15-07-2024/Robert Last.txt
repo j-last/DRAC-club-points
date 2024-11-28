@@ -1,9 +1,7 @@
 -----------
-M40-44
+M45-49
 CLUB 100
 -----------
-TOTAL 12
+TOTAL 100
 -----------
 RACES:
-3/07/24, Wroxham 5k, 00.21.54, 6 points
-03/07/24, Wroxham 5k, 00.21.54, 6 points

@@ -2,9 +2,13 @@
 M55-59
 CLUB 50
 -----------
-TOTAL 71
+TOTAL 93
 -----------
 PARKRUNS 10
 -----------
 RACES:
-idk, Aylsham 10k, 00.45.44, 7 points
+21/07/24, Flying 5k, 00.21.25, 7 points
+22/08/24, DRAC 10k Handicap, 4 points
+08/09/24, Run Norwich #24 10k, 00.45.43, 7 points
+13/10/24, Ryston XC 5k, 4 points
+20/10/24, Blickling half, 01.41.37, 7 points

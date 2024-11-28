@@ -2,8 +2,10 @@
 M45-49
 CLUB 50
 -----------
-TOTAL 23
+TOTAL 32
 -----------
 PARKRUNS 10
 -----------
 RACES:
+22/08/24, DRAC 10k Handicap, 4 points
+22/09/24, Thompson 10k, 00.50.31, 5 points

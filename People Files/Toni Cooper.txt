@@ -2,8 +2,11 @@
 W45-49
 CLUB 50
 -----------
-TOTAL 18
+TOTAL 30
 -----------
 PARKRUNS 10
 -----------
 RACES:
+18/08/24, Dereham 5k, 00.28.56, 4 points
+22/09/24, Thompson 5k, 00.32.36, 4 points
+29/09/24, Run Sandringham 5k, 00.31.04, 4 points

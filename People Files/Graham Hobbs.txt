@@ -2,8 +2,15 @@
 M50-54
 CLUB 50
 -----------
-TOTAL 3
+TOTAL 10
 -----------
-PARKRUNS 3
+PARKRUNS 10
 -----------
 RACES:
+27/07/24, parkrun, 1 point
+17/08/24, parkrun, 1 point
+24/08/24, parkrun, 1 point
+07/09/24, parkrun, 1 point
+21/09/24, parkrun, 1 point
+05/10/24, parkrun, 1 point
+12/10/24, parkrun, 1 point

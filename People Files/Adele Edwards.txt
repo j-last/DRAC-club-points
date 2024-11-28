@@ -1,21 +1,18 @@
 -----------
 W40-44
-CLUB 50
+CLUB 100
 -----------
-TOTAL 122
------------
-PARKRUNS 10
+TOTAL 111
 -----------
 RACES:
-test after something went wrong, parkrun, 1 point
-think ive fixed, parkrun, 1 point
-yeah this is fixed, parkrun, 1 point
-yep done :), parkrun, 1 point
+20/07/24, parkrun, 1 point
 26/07/24, Worstead 5mi, 00.37.38, 6 points
-26/07/24, Worstead 5mi, 00.37.38, 6 points
-26/07/24, Worstead 5mi, 00.37.38, 6 points
-26/07/24, Worstead 5mi, 00.37.38, 6 points
-26/07/24, Worstead 5mi, 00.37.38, 6 points
-26/07/24, Worstead 5mi, 00.37.38, 6 points
-idk, parkrun, 1 point
-idk, parkrun, 1 point
+31/07/24, Run Snetterton 10k, 00.46.30, 7 points
+03/08/24, parkrun, 1 point
+17/08/24, parkrun, 1 point
+22/08/24, DRAC 10k Handicap, 4 points
+31/08/24, parkrun, 1 point
+08/09/24, Run Norwich #24 10k, 00.48.14, 6 points
+14/09/24, RNR #24, 4 points
+06/10/24, Wild @ West Acre 10K, 4 points
+20/10/24, DRAC GP 10 Mile, 4 points

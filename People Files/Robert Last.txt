@@ -2,13 +2,16 @@
 M45-49
 CLUB 100
 -----------
-TOTAL 141
+TOTAL 146
 -----------
 RACES:
-idk, Aylsham 10k, 00.48.41, 5 points
+14/07/24, Humpty Dumpty 10k, 00.49.05, 5 points
 26/07/24, Worstead 5mi, 00.37.13, 6 points
-26/07/24, Worstead 5mi, 00.37.13, 6 points
-26/07/24, Worstead 5mi, 00.37.13, 6 points
-26/07/24, Worstead 5mi, 00.37.13, 6 points
-26/07/24, Worstead 5mi, 00.37.13, 6 points
-26/07/24, Worstead 5mi, 00.37.13, 6 points
+22/08/24, DRAC 10k Handicap, 4 points
+01/09/24, Wissey 10mi, 01.22.33, 5 points
+08/09/24, Run Norwich #24 10k, 00.48.37, 5 points
+14/09/24, RNR #24, 4 points
+29/09/24, Bure valley 10mi, 01.20.20, 5 points
+06/10/24, Wild @ West Acre 10K, 4 points
+13/10/24, Ryston XC 5k, 4 points
+20/10/24, DRAC GP 10 Mile, 4 points

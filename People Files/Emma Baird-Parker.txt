@@ -2,8 +2,10 @@
 W45-49
 CLUB 50
 -----------
-TOTAL 12
+TOTAL 14
 -----------
-PARKRUNS 8
+PARKRUNS 10
 -----------
 RACES:
+27/07/24, parkrun, 1 point
+10/8/24, parkrun, 1 point

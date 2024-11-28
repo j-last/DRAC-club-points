@@ -2,16 +2,18 @@
 W40-44
 CLUB 50
 -----------
-TOTAL 23
+TOTAL 42
 -----------
-PARKRUNS 10
+PARKRUNS 7
 -----------
 RACES:
-test after something went wrong, parkrun, 1 point
-think ive fixed, parkrun, 1 point
-yeah this is fixed, parkrun, 1 point
-yep done :), parkrun, 1 point
-idk, parkrun, 1 point
-idk, parkrun, 1 point
-idk, parkrun, 1 point
-idk, parkrun, 1 point
+14/07/24, Humpty Dumpty 10k, 00.53.52, 5 points
+20/07/24, parkrun, 1 point
+03/08/24, parkrun, 1 point
+08/09/24, Run Norwich #24 10k, 00.55.41, 5 points
+14/09/24, RNR #24, 4 points
+21/09/24, parkrun, 1 point
+28/09/24, parkrun, 1 point
+06/10/24, Big Stampede Relay, 4 points
+13/10/24, Ryston XC 5k, 4 points
+21/10/24, parkrun, 1 point

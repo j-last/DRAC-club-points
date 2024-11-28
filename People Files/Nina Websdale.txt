@@ -2,8 +2,13 @@
 W50-54
 CLUB 50
 -----------
-TOTAL 54
+TOTAL 74
 -----------
 PARKRUNS 10
 -----------
 RACES:
+02/08/24, Reepham 10k, 01.21.49, 4 points
+18/08/24, Dereham 5k, 00.35.13, 4 points
+08/09/24, Run Norwich #24 10k, 01.17.25, 4 points
+22/09/24, Thompson 5k, 00.38.49, 4 points
+13/10/24, Ryston XC 5k, 4 points

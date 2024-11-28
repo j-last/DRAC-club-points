@@ -2,14 +2,18 @@
 M40-44
 CLUB 50
 -----------
-TOTAL 58
+TOTAL 52
 -----------
-PARKRUNS 0
+PARKRUNS 6
 -----------
 RACES:
 26/07/24, Worstead 5mi, 00.33.25, 6 points
-26/07/24, Worstead 5mi, 00.33.25, 6 points
-26/07/24, Worstead 5mi, 00.33.25, 6 points
-26/07/24, Worstead 5mi, 00.33.25, 6 points
-26/07/24, Worstead 5mi, 00.33.25, 6 points
-26/07/24, Worstead 5mi, 00.33.25, 6 points
+02/08/24, Reepham 10k, 00.41.06, 7 points
+10/8/24, parkrun, 1 point
+24/08/24, parkrun, 1 point
+14/09/24, RNR #24, 4 points
+21/09/24, parkrun, 1 point
+28/09/24, parkrun, 1 point
+29/09/24, Bure valley 10mi, 01.05.55, 7 points
+12/10/24, parkrun, 1 point
+26/10/24, parkrun, 1 point

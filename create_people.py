@@ -1,6 +1,5 @@
 import os
 
-
 def createNewPerson(name):
     f = open(os.path.join("People Files", name + ".txt"), "w")
 

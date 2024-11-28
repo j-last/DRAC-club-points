@@ -2,8 +2,10 @@
 M45-49
 CLUB 50
 -----------
-TOTAL 18
+TOTAL 26
 -----------
 PARKRUNS 10
 -----------
 RACES:
+29/09/24, Run Sandringham 10k, 00.55.11, 4 points
+06/10/24, Big Stampede 5k, 00.37.10, 4 points

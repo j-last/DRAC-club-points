@@ -2,13 +2,13 @@
 W65+
 CLUB 100
 -----------
-TOTAL 105
+TOTAL 103
 -----------
 RACES:
-idk, Aylsham 10k, 01.12.15, 5 points
 26/07/24, Worstead 5mi, 00.55.24, 5 points
-26/07/24, Worstead 5mi, 00.55.24, 5 points
-26/07/24, Worstead 5mi, 00.55.24, 5 points
-26/07/24, Worstead 5mi, 00.55.24, 5 points
-26/07/24, Worstead 5mi, 00.55.24, 5 points
-26/07/24, Worstead 5mi, 00.55.24, 5 points
+02/08/24, Reepham 10k, 01.13.46, 5 points
+22/08/24, DRAC 10k Handicap, 4 points
+01/09/24, Harling 10k, 01.12.48, 5 points
+22/09/24, Marriots Way 10k, 01.10.47, 5 points
+29/09/24, Run Sandringham 5k, 00.33.39, 5 points
+13/10/24, Ryston XC 5k, 4 points

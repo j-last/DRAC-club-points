@@ -2,8 +2,11 @@
 W40-44
 CLUB 50
 -----------
-TOTAL 8
+TOTAL 15
 -----------
-PARKRUNS 4
+PARKRUNS 6
 -----------
 RACES:
+20/07/24, parkrun, 1 point
+27/07/24, parkrun, 1 point
+18/08/24, Dereham 5k, 00.25.48, 5 points

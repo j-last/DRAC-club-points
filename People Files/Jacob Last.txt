@@ -2,16 +2,11 @@
 MU40
 CLUB 50
 -----------
-TOTAL 123
+TOTAL 94
 -----------
 PARKRUNS 10
 -----------
 RACES:
-idk, Aylsham 10k, 00.41.57, 6 points
-asjdh, sdf 5mi, 01.02.02, 4 points
 26/07/24, Worstead 5mi, 00.32.06, 6 points
-26/07/24, Worstead 5mi, 00.32.06, 6 points
-26/07/24, Worstead 5mi, 00.32.06, 6 points
-26/07/24, Worstead 5mi, 00.32.06, 6 points
-26/07/24, Worstead 5mi, 00.32.06, 6 points
-26/07/24, Worstead 5mi, 00.32.06, 6 points
+01/09/24, Wissey 10mi, 01.15.20, 5 points
+08/09/24, Run Norwich #24 10k, 00.43.31, 6 points

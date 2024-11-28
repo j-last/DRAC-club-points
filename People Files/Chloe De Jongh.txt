@@ -1,10 +1,11 @@
 -----------
-W35-39
+WU35
 CLUB 50
 -----------
-TOTAL 1
+TOTAL 3
 -----------
-PARKRUNS 1
+PARKRUNS 3
 -----------
 RACES:
-idk, parkrun, 1 point
+03/08/24, parkrun, 1 point
+10/8/24, parkrun, 1 point

@@ -2,8 +2,9 @@
 M55-59
 CLUB 50
 -----------
-TOTAL 5
+TOTAL 9
 -----------
 PARKRUNS 1
 -----------
 RACES:
+20/10/24, DRAC GP 10 Mile, 4 points

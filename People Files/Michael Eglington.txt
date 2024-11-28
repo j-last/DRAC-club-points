@@ -2,13 +2,18 @@
 M40-44
 CLUB 50
 -----------
-TOTAL 57
+TOTAL 80
 -----------
 PARKRUNS 10
 -----------
 RACES:
-test after something went wrong, parkrun, 1 point
-think ive fixed, parkrun, 1 point
-yeah this is fixed, parkrun, 1 point
-yep done :), parkrun, 1 point
-idk, parkrun, 1 point
+20/07/24, parkrun, 1 point
+27/07/24, parkrun, 1 point
+27/07/24, Y Domen, 4 points
+03/08/24, parkrun, 1 point
+11/08/24, Great Yarmouth half, 01.27.27, 7 points
+22/08/24, DRAC 10k Handicap, 4 points
+14/09/24, RNR #24, 4 points
+21/10/24, parkrun, 1 point
+20/10/24, DRAC GP 10 Mile, 4 points
+26/10/24, parkrun, 1 point
