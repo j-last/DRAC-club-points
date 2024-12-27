@@ -1,0 +1,5 @@
+Stop parkruns from counting towards points (apart from under 17s)
+
+Seperate parkrun folder to add up parkruns (as people have different names for parkrun)
+
+parkrun summary
