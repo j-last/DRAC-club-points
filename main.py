@@ -1,10 +1,11 @@
-
+import os
 import time
 import datetime
-from functions import *
 import shutil
-from bs4 import BeautifulSoup as bs
 import requests
+from functions.functions import *
+from bs4 import BeautifulSoup as bs
+
 # constants
 timeFormat = "%H.%M.%S"
 

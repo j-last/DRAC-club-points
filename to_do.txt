@@ -1,4 +1,4 @@
-Stop parkruns from counting towards points (apart from under 17s)
+Stop parkruns from counting towards points (apart from under 17s) - ask what this age cat. should be called: JM/JW or MU17/WU17
 
 Seperate parkrun folder to add up parkruns (as people have different names for parkrun)
 
