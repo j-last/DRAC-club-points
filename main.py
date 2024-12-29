@@ -127,16 +127,30 @@ def addParkruns():
     raceDate = input("Date: ")
     if raceDate == "": return None
 
+    newlines = get_parkrun_dict()
+
     while True:
         print("------------------------------------------------------")
         print(f"PARKRUN - {raceDate}")
         valid = False
         while not valid:
             name = getNameFromUser()
-            if name == "": return None
+            if name == "": break
             valid = True
+        if not valid: break
+        add_parkrun_to_file(name, raceDate)
+        if name in newlines.keys():
+            newlines[name] += 1
+        else:
+            newlines[name] = 1
+
+    open("parkruns.txt", "w").close()
+    parkrun_file = open("parkruns.txt", "a")
+    for key, value in newlines.items():
+        parkrun_file.write(f"{key} - {value}\n")
+    parkrun_file.close()
+
         
-        addRaceToFile(name, "parkrun", "", raceDate, "", 1)
 
 # MENU OPTION P (Parkruns - auto)
 def addParkrunsAuto():
@@ -146,6 +160,8 @@ def addParkrunsAuto():
     notAdded = []
     web_text = input("CTRL+A then CTRL+C on the consolodated report website and CTRL+V here: ")
     endindex = web_text.find("Dereham Runners AC")
+
+    newlines = get_parkrun_dict()
 
     runnersAdded = 0
     while endindex != -1:
@@ -163,11 +179,16 @@ def addParkrunsAuto():
                 name[i] = name[i].lower().capitalize()
                 newname += " " + name[i]
             name = newname
+            if name in newlines.keys():
+                newlines[name] += 1
+            else:
+                newlines[name] = 1
             try:
-                addRaceToFile(name, "parkrun", "", raceDate, "", 1)
+                add_parkrun_to_file(name, raceDate)
                 runnersAdded += 1
             except FileNotFoundError:
-                notAdded.append(name)
+                if name not in [""]:
+                    notAdded.append(name)
 
         web_text = web_text[endindex + 1 :]
         endindex = web_text.find("Dereham Runners AC")
@@ -183,7 +204,7 @@ def addParkrunsAuto():
         else:
             ageCat = getAgeCat(name)
             print(name.upper() + ", " + ageCat)
-            addRaceToFile(name, "parkrun", "", raceDate, "", 1)
+            add_parkrun_to_file(name, raceDate)
             runnersAdded += 1
     
     print("")

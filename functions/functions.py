@@ -74,6 +74,7 @@ def getAgeCat(name):
     f.close()
     return ageCat
 
+
 # returns the amount of points a certain time at a cetain distance gets for an age category
 def calcPoints(raceTime, dist, ageCat):
 
@@ -115,7 +116,6 @@ def addRaceToFile(name, race, dist, date, time, points):
             return None
         
         numParkruns += 1
-        if numParkruns >= 10: removeFromParkrunToDo(name)
         
         fileLines[6] = "PARKRUNS " + str(numParkruns) + "\n"
         fileLines.append(f"{date}, {race}, {points} point\n")
@@ -177,16 +177,22 @@ def createNewPerson(name):
     print(f"FILE CREATED for {name.upper()}")
 
 
-def removeFromParkrunToDo(name):
-    f = open("Parkruns Todo.txt", "r")
-    fileData = f.readlines()
-    f.close()
+def get_parkrun_dict():
+    parkrun_file = open("parkruns.txt", "r")
+    lines = parkrun_file.readlines()
+    parkrun_file.close()
 
-    for i in range(len(fileData)):
-        if fileData[i].strip() == name:
-            fileData[i] = ""
+    newlines = {}
+    for line in lines:
+        name, total = line.split(" - ")
+        total = int(total)
+        newlines[name] = total
+    return newlines
 
-    f = open("Parkruns Todo.txt", "w")
-    f.writelines(fileData)
-    f.close()
-    print(f"{name.upper()} has now done 10 parkruns. Removed from 'Parkruns Todo'.")
+def add_parkrun_to_file(name, raceDate):
+    age_cat = getAgeCat(name)
+    if age_cat == "MU17" or age_cat == "WU17":
+        addRaceToFile(name, "parkrun", "", raceDate, "", 1)
+
+def increment_parkrun_count(name, file_lines):
+    pass
