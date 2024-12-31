@@ -1,5 +1,5 @@
-Stop parkruns from counting towards points (apart from under 17s) - ask what this age cat. should be called: JM/JW or MU17/WU17
+check changing age categoories works (particularly changing to a u17 as this needs to add a parkrun line)
 
-Seperate parkrun folder to add up parkruns (as people have different names for parkrun)
+age cat. MU40 -> M17-39
 
-parkrun summary
+reformat people file structure and code structure

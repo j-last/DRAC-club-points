@@ -193,6 +193,12 @@ def addParkrunsAuto():
         web_text = web_text[endindex + 1 :]
         endindex = web_text.find("Dereham Runners AC")
         print("")
+
+    open("parkruns.txt", "w").close()
+    parkrun_file = open("parkruns.txt", "a")
+    for key, value in newlines.items():
+        parkrun_file.write(f"{key} - {value}\n")
+    parkrun_file.close()
     
     print("NOT ADDED: ")
     for name in notAdded:
@@ -219,7 +225,7 @@ def summarySheet():
         print(name)
         f = open(os.path.join("People Files", name), "r")
         fileLines = f.readlines()
-        points = int(fileLines[4].strip()[6:])
+        points = int(fileLines[2].strip()[6:])
         club = fileLines[2].strip()
         f.close()
 

@@ -7,7 +7,7 @@ for name in os.listdir("People Files"):
     with open(file_name, "w") as f:
         f.writelines([
             "-----------\n",
-            age_cat + "\n",
+            age_cat + "?\n",
             "TOTAL: 0\n",
             "-----------\n",
             "RACES:\n"

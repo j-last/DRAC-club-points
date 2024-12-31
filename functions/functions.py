@@ -19,6 +19,7 @@ def getNameFromUser(): # gets name of person and checks if they exist
             formattedname += subname + " "
         name = formattedname.strip()
         
+        # change how this is checked
         try:
             getAgeCat(name)
             return name
@@ -63,8 +64,6 @@ def getRaceDetailsFromUser():
 
     return raceName, raceDist, raceDate
 
-    # ALSO MAKE SO NOT ADDED LIST IS EASIER TO THEN CHANGENAMES & ADD FOR
-
 
 # returns the age category of a person from their name
 def getAgeCat(name):
@@ -72,6 +71,28 @@ def getAgeCat(name):
     lines = f.readlines()
     ageCat = lines[1][:-1] # removes newline character
     f.close()
+
+    # changing age categories if not already done so
+    f = open(os.path.join("People Files", name + ".txt"), "w")
+    if ageCat[-1] == "?":
+        print(name.upper())
+        print(f"This person was {ageCat[:-1]}. If this has changed enter their new age category below. If not enter nothing.")
+        print("Make sure to change all juniors to MU17 or WU17.")
+        new_age_cat = input()
+        if new_age_cat == "":
+            ageCat = ageCat[:-1]
+            lines[1] = ageCat + "\n"
+        elif new_age_cat.upper() == "MU17" or new_age_cat.upper() == "WU17":
+            ageCat = new_age_cat.upper()
+            lines[1] = ageCat + "\n"
+            lines.insert(2, "PARKRUNS: 0\n")
+            # do something here
+        else:
+            ageCat = new_age_cat.upper()
+            lines[1] = ageCat + "\n"
+        f.writelines(lines)
+    f.close()
+        
     return ageCat
 
 
@@ -91,16 +112,17 @@ def calcPoints(raceTime, dist, ageCat):
     if points == 9: points += 1
     return points
 
-
+# NEED TO CHANGE
+# split into add race and add parkrun seperately
 # adds the points to the persons file, along with other data about the race
 def addRaceToFile(name, race, dist, date, time, points):
     personFile = open(os.path.join("People Files", name + ".txt"), "r")
     fileLines = personFile.readlines()
     personFile.close()
 
-    totalPoints = int(fileLines[4].strip()[6:])
+    totalPoints = int(fileLines[2].strip()[6:])
     totalPoints += points
-    fileLines[4] = "TOTAL " + str(totalPoints) + "\n"
+    fileLines[2] = "TOTAL: " + str(totalPoints) + "\n"
 
     if dist.isnumeric():
         fileLines.append(f"{date}, {race}, {points} points\n")
@@ -110,14 +132,14 @@ def addRaceToFile(name, race, dist, date, time, points):
         if fileLines[2].strip() == "CLUB 100":
             print(f"{name.upper()} is part of 'CLUB 100'. No new parkrun added.")
             return None
-        numParkruns = int(fileLines[6].strip()[9:]) # gets number of parkruns from the file
+        numParkruns = int(fileLines[3].strip()[9:]) # gets number of parkruns from the file
         if int(numParkruns) >= 10:
             print(f"{name.upper()} Has already done 10 parkruns. No new parkrun added.")
             return None
         
         numParkruns += 1
         
-        fileLines[6] = "PARKRUNS " + str(numParkruns) + "\n"
+        fileLines[3] = "PARKRUNS: " + str(numParkruns) + "\n"
         fileLines.append(f"{date}, {race}, {points} point\n")
 
     personFile = open(os.path.join("People Files", name + ".txt"), "w")
@@ -133,12 +155,13 @@ def createNewPerson(name):
     print("------------------------------------------------------")
     print(f"CREATE FILE {name.upper()}.")
     
-    validAges = ["MU40", "M40-44", "M45-49", "M50-54", "M55-59", "M60-64", "M65+",
-                 "WU35", "W35-39", "W40-44", "W45-49", "W50-54", "W55-59", "W60-64", "W65+"]
+    validAges = ["MU17", "M17-39", "M40-44", "M45-49", "M50-54", "M55-59", "M60-64", "M65+",
+                 "WU17", "W17-34", "W35-39", "W40-44", "W45-49", "W50-54", "W55-59", "W60-64", "W65+"]
     ageCat = ""
     while ageCat not in validAges:
         ageCat = input("Age category: ").upper()
 
+    # NEED TO CHANGE
     club = ""
     while club != "50" and club != "100":
         club = input("CLUB 50 or 100? ")
@@ -189,10 +212,9 @@ def get_parkrun_dict():
         newlines[name] = total
     return newlines
 
+#CHANGE
 def add_parkrun_to_file(name, raceDate):
     age_cat = getAgeCat(name)
     if age_cat == "MU17" or age_cat == "WU17":
         addRaceToFile(name, "parkrun", "", raceDate, "", 1)
 
-def increment_parkrun_count(name, file_lines):
-    pass

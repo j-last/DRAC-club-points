@@ -1,0 +1,42 @@
+main
+    totalraacetiming
+        race details
+        url
+        function to return {runner:time} dictionary
+        for runner
+            add race to file
+        for not added
+            ask alternative name
+
+    parkrun website
+        get date
+        web data
+        function to return list of runners
+        for runner
+            add to count in dictionary version of file
+            if u17 add to file
+        write to file
+        for not added
+            ask alternative name
+            somehow save if not to be added?
+
+    summary sheet
+        should be easier to figure something out
+
+    manual race
+        race details
+        for runner
+            get time
+            add race to file
+    
+    manual parkrun
+        get date
+        for runner
+            add to count in dictionary version of file
+            add to file if u17
+        write to file
+        
+functions
+    general_functions
+    url_functions
+    parkrun_functions
