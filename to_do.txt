@@ -1,5 +1,0 @@
-check changing age categoories works (particularly changing to a u17 as this needs to add a parkrun line)
-
-age cat. MU40 -> M17-39
-
-reformat people file structure and code structure

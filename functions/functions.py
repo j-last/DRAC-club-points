@@ -1,42 +1,53 @@
 import json
 import os
 import time
+import datetime
 
 # constants
 timeFormat = "%H.%M.%S"
 
-def getNameFromUser(): # gets name of person and checks if they exist
-    while True:
-        name = input("Name: ")
-        if name == "": return ""
+def runner_exists(name):
+    people = os.listdir("People Files")
+    if name + ".txt" in people:
+        return True
 
-        name = name.split(" ")
-        for i in range(len(name)):
-            name[i] = name[i].capitalize()
+def getNameFromUser():
+    """Asks the user for a name and checks if they exist.
+    If they don't exist, then the user is promted to create a file for them.
+    """
+    while True:
+        # get name
+        name = input("Name: ")
+        if name == "": return
+
+        # capitalise name
+        names = name.split(" ")
+        name = ""
+        for sub_name in names:
+            name += sub_name.capitalize() + " "
+        name = name.strip()
         
-        formattedname = ""
-        for subname in name:
-            formattedname += subname + " "
-        name = formattedname.strip()
-        
-        # change how this is checked
-        try:
-            getAgeCat(name)
+        # check if they exist
+        if runner_exists(name):
             return name
-        except FileNotFoundError:
-            newPerson = input("This person doesn't exist yet. Create a file for them? (y/n) ")
-            if newPerson.lower() == "y": 
+        # if they dont, promt to create a file for them
+        else:
+            createNewPerson = input("This person doesn't exist yet. Create a file for them? (y/n) ")
+            if createNewPerson.lower() == "y": 
                 createNewPerson(name)
                 return name
+            else: return
+
 
 def getDistFromUser(): # gets valid dist from user or points value
     validDistances = ["5k", "5mi", "10k", "10mi", "half", "mara"]
     while True:
         raceDist = input("Distance (or points num): ")
-        if raceDist == "": return ""
+        if raceDist == "": return
         elif raceDist in validDistances: return raceDist # race dist is a valid distance
         elif raceDist.isnumeric(): return raceDist # race dist is a valid points value
         else: print("This is not a valid distance or points value.")
+
 
 def getTimeFromUser():
     while True:
@@ -54,13 +65,13 @@ def getTimeFromUser():
 
 def getRaceDetailsFromUser():
     raceName = input("Race Name: ")
-    if raceName == "": return ""
+    if raceName == "": return
 
     raceDist = getDistFromUser()
-    if raceDist == "": return ""
+    if raceDist == "": return
 
     raceDate = input("Date: ")
-    if raceDate == "": return ""
+    if raceDate == "": return
 
     return raceName, raceDist, raceDate
 
@@ -73,11 +84,11 @@ def getAgeCat(name):
     f.close()
 
     # changing age categories if not already done so
-    f = open(os.path.join("People Files", name + ".txt"), "w")
     if ageCat[-1] == "?":
+        f = open(os.path.join("People Files", name + ".txt"), "w")
         print(name.upper())
-        print(f"This person was {ageCat[:-1]}. If this has changed enter their new age category below. If not enter nothing.")
-        print("Make sure to change all juniors to MU17 or WU17.")
+        print("Remember to change U40 to 17-39")
+        print(f"This person was {ageCat[:-1]}. If this has changed enter their new age category below.")
         new_age_cat = input()
         if new_age_cat == "":
             ageCat = ageCat[:-1]
@@ -85,13 +96,12 @@ def getAgeCat(name):
         elif new_age_cat.upper() == "MU17" or new_age_cat.upper() == "WU17":
             ageCat = new_age_cat.upper()
             lines[1] = ageCat + "\n"
-            lines.insert(2, "PARKRUNS: 0\n")
-            # do something here
+            lines.insert(3, "PARKRUNS: 0\n")
         else:
             ageCat = new_age_cat.upper()
             lines[1] = ageCat + "\n"
         f.writelines(lines)
-    f.close()
+        f.close()
         
     return ageCat
 
@@ -112,13 +122,21 @@ def calcPoints(raceTime, dist, ageCat):
     if points == 9: points += 1
     return points
 
-# NEED TO CHANGE
-# split into add race and add parkrun seperately
-# adds the points to the persons file, along with other data about the race
-def addRaceToFile(name, race, dist, date, time, points):
+
+def get_filelines(name):
     personFile = open(os.path.join("People Files", name + ".txt"), "r")
     fileLines = personFile.readlines()
     personFile.close()
+    return fileLines
+
+def write_filelines(name, lines_to_write):
+    personFile = open(os.path.join("People Files", name + ".txt"), "w")
+    personFile.writelines(lines_to_write)
+    personFile.close()
+
+
+def addRaceToFile(name, race, dist, date, time, points):
+    fileLines = get_filelines(name)
 
     totalPoints = int(fileLines[2].strip()[6:])
     totalPoints += points
@@ -126,31 +144,43 @@ def addRaceToFile(name, race, dist, date, time, points):
 
     if dist.isnumeric():
         fileLines.append(f"{date}, {race}, {points} points\n")
-    elif race != "parkrun":
-        fileLines.append(f"{date}, {race} {dist}, {time}, {points} points\n")
     else:
-        if fileLines[2].strip() == "CLUB 100":
-            print(f"{name.upper()} is part of 'CLUB 100'. No new parkrun added.")
-            return None
-        numParkruns = int(fileLines[3].strip()[9:]) # gets number of parkruns from the file
-        if int(numParkruns) >= 10:
-            print(f"{name.upper()} Has already done 10 parkruns. No new parkrun added.")
-            return None
-        
-        numParkruns += 1
-        
-        fileLines[3] = "PARKRUNS: " + str(numParkruns) + "\n"
-        fileLines.append(f"{date}, {race}, {points} point\n")
+        fileLines.append(f"{date}, {race} {dist}, {time}, {points} points\n")
 
-    personFile = open(os.path.join("People Files", name + ".txt"), "w")
-    personFile.writelines(fileLines)
-    personFile.close()
+    write_filelines(name, fileLines)
 
     print(f"{points} POINTS added to {name.upper()}.")
     print(f"{name.upper()} is now on {totalPoints} POINTS.")
 
 
-# creates a new file for a person (with 0 points & parkruns)
+def add_parkrun_to_file(name, date):
+    if getAgeCat(name) not in ["MU17", "WU17"]:
+        print(f"{name.upper()} is not a junior. No new parkrun added.")
+        print()
+        return
+
+    fileLines = get_filelines(name)
+
+    totalPoints = int(fileLines[2].strip()[6:])
+    totalPoints += 1
+    fileLines[2] = "TOTAL: " + str(totalPoints) + "\n"
+
+    numParkruns = int(fileLines[3].strip()[9:]) # gets number of parkruns from the file
+    if int(numParkruns) >= 10:
+        print(f"{name.upper()} Has already done 10 parkruns. No new parkrun added.")
+        print()
+        return
+        
+    numParkruns += 1
+    
+    fileLines[3] = "PARKRUNS: " + str(numParkruns) + "\n"
+    fileLines.append(f"{date}, parkrun, 1 point\n")
+
+    write_filelines(name, fileLines)
+    print(f"1 POINTS added to {name.upper()}.")
+    print()
+
+
 def createNewPerson(name):
     print("------------------------------------------------------")
     print(f"CREATE FILE {name.upper()}.")
@@ -160,43 +190,17 @@ def createNewPerson(name):
     ageCat = ""
     while ageCat not in validAges:
         ageCat = input("Age category: ").upper()
+    
+    file_lines = ["-----------\n",
+                  ageCat + "\n",
+                  "TOTAL: 0\n",
+                  "-----------\n",
+                  "RACES:\n"]
 
-    # NEED TO CHANGE
-    club = ""
-    while club != "50" and club != "100":
-        club = input("CLUB 50 or 100? ")
-        if club == "50":
-            f = open(os.path.join("People Files", name + ".txt"), "w")
-            f.writelines([
-            "-----------\n",
-            f"{ageCat}\n",
-            f"CLUB {club}\n",
-            "-----------\n",
-            "TOTAL 0\n",
-            "-----------\n",
-            "PARKRUNS 0\n",
-            "-----------\n",
-            "RACES:\n"
-                    ]) 
-            f.close()
-            fparkrun = open("Parkruns Todo.txt", "a")
-            fparkrun.write(f"{name}\n")
-            fparkrun.close()
-            break
-        elif club == "100":
-            f = open(os.path.join("People Files", name + ".txt"), "w")
-            f.writelines([
-            "-----------\n",
-            f"{ageCat}\n",
-            f"CLUB {club}\n",
-            "-----------\n",
-            "TOTAL 0\n",
-            "-----------\n",
-            "RACES:\n"
-                    ]) 
-            f.close()
-            break
+    if ageCat in ["MU17", "WU17"]:
+        file_lines.insert(3, "PARKRUNS: 0")
 
+    write_filelines(name, file_lines)
     print(f"FILE CREATED for {name.upper()}")
 
 
@@ -212,9 +216,12 @@ def get_parkrun_dict():
         newlines[name] = total
     return newlines
 
-#CHANGE
-def add_parkrun_to_file(name, raceDate):
-    age_cat = getAgeCat(name)
-    if age_cat == "MU17" or age_cat == "WU17":
-        addRaceToFile(name, "parkrun", "", raceDate, "", 1)
-
+def add_to_history(racename):
+    f = open("history.txt", "r")
+    filelines = f.readlines()
+    f.close()
+    date_added = str(datetime.date.strftime(datetime.date.today(), "%d-%m-%Y"))
+    filelines.insert(0, f"{date_added}, {racename}\n")
+    f = open("history.txt", "w")
+    f.writelines(filelines)
+    f.close()
