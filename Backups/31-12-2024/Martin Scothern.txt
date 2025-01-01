@@ -1,7 +1,0 @@
------------
-M60-64
-TOTAL: 14
------------
-RACES:
-today, Marham 10k, 00.47.15, 7 points
-today, ewdjk 10k, 00.47.15, 7 points
