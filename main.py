@@ -1,3 +1,40 @@
+"""
+
+
+
+DRAC CLUB POINTS
+
+CLICK PLAY BUTTON (TOP RIGHT) TO START
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+
 import os
 import time
 import datetime
@@ -48,46 +85,51 @@ def urlRaceEntry():
     if url == "": return
 
     runners = get_runners_and_times(url)
+    to_add = []
     not_added = []
     runnersAdded = 0
-    
+    print()
+    print("--------------------------------")
     for name, raceTime in runners.items():
         if runner_exists(name):
             ageCat = getAgeCat(name)
-            print(name.upper() + ", " + ageCat + ", " + raceTime)
-
             raceTime = time.strptime(raceTime, "%H:%M:%S")
             points = calcPoints(raceTime, raceDist, ageCat)
-
             raceTime = time.strftime(timeFormat, raceTime)
-            addRaceToFile(name, raceName, raceDist, raceDate, raceTime, points)
-            runnersAdded += 1
+            to_add.append((name, raceTime, points))
+            print(f"{name.upper()} - {raceTime} - {points} points")
         else: not_added.append((name, raceTime))
-        print("")
-
-    print("NOT ADDED: ")
-    for name, raceTime in not_added:
-        print("")
-        print(f"{name.upper()} ({raceTime}) not found. Enter their file name below.")
-        name = getNameFromUser()
-        if name is None:
-            print("No new race added.")
-        else:
-            ageCat = getAgeCat(name)
-            print(name.upper() + "," + ageCat + "," + raceTime)
-            raceTime = time.strptime(raceTime, "%H:%M:%S")
-            points = calcPoints(raceTime, raceDist, ageCat)
-
-            raceTime = time.strftime(timeFormat, raceTime)
+    print(f"{len(to_add)} RUNNERS ({len(not_added)} unrecognised)")
+    answer = input("ADD THESE RESULTS? (y/n) ")
+    if answer.lower() == "y":
+        for name, raceTime, points in to_add:
             addRaceToFile(name, raceName, raceDist, raceDate, raceTime, points)
             runnersAdded += 1
+
+        for name, raceTime in not_added:
+            print("")
+            print(f"{name.upper()} ({raceTime}) was not found. Enter their file name below.")
+            name = getNameFromUser()
+            if name is None:
+                print("No new race added.")
+            else:
+                ageCat = getAgeCat(name)
+                print(name.upper() + "," + ageCat + "," + raceTime)
+                raceTime = time.strptime(raceTime, "%H:%M:%S")
+                points = calcPoints(raceTime, raceDist, ageCat)
+
+                raceTime = time.strftime(timeFormat, raceTime)
+                addRaceToFile(name, raceName, raceDist, raceDate, raceTime, points)
+                runnersAdded += 1
     print("")
 
     print(f"{runnersAdded} runners have been added.")
-    add_to_history(raceName)
+    if runnersAdded > 0:
+        add_to_history(raceName)
 
 
 def manualRaceEntry():
+    runners_added = 0
     race_details = getRaceDetailsFromUser()
     if race_details is None: return
 
@@ -96,10 +138,12 @@ def manualRaceEntry():
     add_to_history(raceName)
     while True:
         print("------------------------------------------------------")
-        print(f"{raceName.upper()} {raceDist.upper()} - {raceDate}")
+        print(f"{raceName.upper()} {raceDist.upper()} - {raceDate} ({runners_added} added so far)")
 
         name = getNameFromUser()
         if name is None: return None
+        elif name == "": continue
+        elif not runner_exists(name): continue
 
         ageCat = getAgeCat(name)
         print(ageCat)
@@ -107,6 +151,7 @@ def manualRaceEntry():
         if raceDist.isnumeric():
             points = int(raceDist)
             addRaceToFile(name, raceName, raceDist, raceDate, "", points)
+            runners_added += 1
         
         else:
             raceTime = getTimeFromUser()
@@ -116,6 +161,7 @@ def manualRaceEntry():
 
             raceTime = time.strftime(timeFormat, raceTime)
             addRaceToFile(name, raceName, raceDist, raceDate, raceTime, points)
+            runners_added += 1
 
 
 def addParkrunsAuto():
@@ -128,33 +174,39 @@ def addParkrunsAuto():
     newlines = get_parkrun_dict()
     runners_added = 0
     not_added = []
+    with open("don't add to parkrun list.txt") as f:
+        dont_add = f.readlines()
+        dont_add = list(map(str.upper, map(str.strip, dont_add)))
 
     for name in runners:
+        if name.upper() in dont_add:
+            continue
+        if newlines.get(name) is not None:
+                newlines[name] += 1
+        else:
+            newlines[name] = 1
+        runners_added += 1
+        write_parkruns(newlines)
+        print(f"{name.upper()} has now done {newlines[name]} parkruns.")
         if runner_exists(name):
             add_parkrun_to_file(name, raceDate)
-            if newlines.get(name) is not None:
-                newlines[name] += 1
-            else:
-                newlines[name] = 1
-            runners_added += 1
         else:
             not_added.append(name)
 
-    write_parkruns(newlines)
-    
-    print("NOT ADDED: ")
+    print("\nNOT ADDED: ")
     for name in not_added:
-        print("")
-        print(f"{name.upper()} not found. If they are U17 enter their file name below.")
+        print(name)
+
+    while True:
+        print("If any of the people in the not added list are U17, enter their file name below: ")
         name = getNameFromUser()
-        if name is None:
-            print("No new parkrun added.")
-        else:
+        if name is None: break
+        elif runner_exists(name):
             ageCat = getAgeCat(name)
             print(name.upper() + ", " + ageCat)
             add_parkrun_to_file(name, raceDate)
-            runnersAdded += 1
-    print("")
+        print("")
+
     print(f"{runners_added} runners have been added.")
 
     add_to_history("parkrun")
@@ -168,18 +220,33 @@ def addParkruns():
 
     print("------------------------------------------------------")
     print(f"PARKRUN - {raceDate}")
+    print("Write all names as they appear on the parkrun website. Don't create files unless they are u17.")
 
     while True:
         name = getNameFromUser()
         if name is None: break
 
-        add_parkrun_to_file(name, raceDate)
-
         if newlines.get(name) is not None:
             newlines[name] += 1
         else:
             newlines[name] = 1
+        write_parkruns(newlines)
         print(f"{name.upper()} has now done {newlines[name]} parkruns.")
+        
+        if runner_exists(name):
+            add_parkrun_to_file(name, raceDate)
+        else:
+            print(f"If {name.upper()} is U17 enter their file name below: ")
+            name = getNameFromUser()
+            if name is None:
+                print("No new parkrun added to their points file.")
+                print()
+                continue
+            else:
+                ageCat = getAgeCat(name)
+                print(name.upper() + ", " + ageCat)
+                add_parkrun_to_file(name, raceDate)
+        print()
     
     write_parkruns(newlines)
 
@@ -191,6 +258,7 @@ def summarySheet():
     points_list = []
     
     for name in os.listdir("People Files"):
+        print(name[:-4])
         f = open(os.path.join("People Files", name), "r")
         fileLines = f.readlines()
         points = int(fileLines[2].strip()[6:])
@@ -222,9 +290,9 @@ def backup():
         shutil.copy(os.path.join("People Files", file), 
                     os.path.join("Backups", dateForFile, file))
     
-    open(os.path.join("Backups", dateForFile, "aaa parkruns.txt"), "w").close()
+    open(os.path.join("Backups", dateForFile, "1 parkruns.txt"), "w").close()
     shutil.copy("parkruns.txt", 
-                os.path.join("Backups", dateForFile, "aaa parkruns.txt"))
+                os.path.join("Backups", dateForFile, "1 parkruns.txt"))
       
     print(f"Backup made for {dateForFile}")
 

@@ -5,6 +5,8 @@ import datetime
 
 # constants
 timeFormat = "%H.%M.%S"
+VALID_AGES = ["MU17", "M17-39", "M40-44", "M45-49", "M50-54", "M55-59", "M60-64", "M65+",
+                 "WU17", "W17-34", "W35-39", "W40-44", "W45-49", "W50-54", "W55-59", "W60-64", "W65+"]
 
 def runner_exists(name):
     people = os.listdir("People Files")
@@ -26,21 +28,23 @@ def getNameFromUser():
         for sub_name in names:
             name += sub_name.capitalize() + " "
         name = name.strip()
-        
+        if "-" in name:
+            name = name.replace("-"+name[name.index("-")+1], "-"+name[name.index("-")+1].upper())
+            
         # check if they exist
         if runner_exists(name):
             return name
         # if they dont, promt to create a file for them
         else:
             createNewPerson = input("This person doesn't exist yet. Create a file for them? (y/n) ")
-            if createNewPerson.lower() == "y": 
-                createNewPerson(name)
+            if createNewPerson.lower() == "y":
+                create_new_person(name)
                 return name
-            else: return
+            else: return name
 
 
 def getDistFromUser(): # gets valid dist from user or points value
-    validDistances = ["5k", "5mi", "10k", "10mi", "half", "mara"]
+    validDistances = ["5k", "5mi", "10k", "10mi", "half","20mi", "mara"]
     while True:
         raceDist = input("Distance (or points num): ")
         if raceDist == "": return
@@ -78,6 +82,7 @@ def getRaceDetailsFromUser():
 
 # returns the age category of a person from their name
 def getAgeCat(name):
+
     f = open(os.path.join("People Files", name + ".txt"), "r")
     lines = f.readlines()
     ageCat = lines[1][:-1] # removes newline character
@@ -85,24 +90,33 @@ def getAgeCat(name):
 
     # changing age categories if not already done so
     if ageCat[-1] == "?":
-        f = open(os.path.join("People Files", name + ".txt"), "w")
+        ageCat = ageCat[:-1]
         print(name.upper())
-        print("Remember to change U40 to 17-39")
-        print(f"This person was {ageCat[:-1]}. If this has changed enter their new age category below.")
-        new_age_cat = input()
+
+        if ageCat == "MU40": ageCat = "M17-39"
+        elif ageCat == "WU35": ageCat = "W17-34"
+
+        print(f"This person was {ageCat}.")
+
+        new_age_cat = None
+        while new_age_cat not in VALID_AGES + [""]:
+            new_age_cat = input("New age category (nothing to keep the same): ")
+            new_age_cat = new_age_cat.upper()
+
         if new_age_cat == "":
-            ageCat = ageCat[:-1]
             lines[1] = ageCat + "\n"
-        elif new_age_cat.upper() == "MU17" or new_age_cat.upper() == "WU17":
-            ageCat = new_age_cat.upper()
-            lines[1] = ageCat + "\n"
+            new_age_cat = ageCat
+        elif new_age_cat== "MU17" or new_age_cat == "WU17":
+            lines[1] = new_age_cat + "\n"
             lines.insert(3, "PARKRUNS: 0\n")
         else:
-            ageCat = new_age_cat.upper()
-            lines[1] = ageCat + "\n"
+            lines[1] = new_age_cat + "\n"
+
+        f = open(os.path.join("People Files", name + ".txt"), "w")
         f.writelines(lines)
         f.close()
-        
+        ageCat = new_age_cat
+    
     return ageCat
 
 
@@ -149,14 +163,12 @@ def addRaceToFile(name, race, dist, date, time, points):
 
     write_filelines(name, fileLines)
 
-    print(f"{points} POINTS added to {name.upper()}.")
-    print(f"{name.upper()} is now on {totalPoints} POINTS.")
+    print(f"{points} POINTS added to {name.upper()} (Total: {totalPoints})")
 
 
 def add_parkrun_to_file(name, date):
     if getAgeCat(name) not in ["MU17", "WU17"]:
         print(f"{name.upper()} is not a junior. No new parkrun added.")
-        print()
         return
 
     fileLines = get_filelines(name)
@@ -167,8 +179,7 @@ def add_parkrun_to_file(name, date):
 
     numParkruns = int(fileLines[3].strip()[9:]) # gets number of parkruns from the file
     if int(numParkruns) >= 10:
-        print(f"{name.upper()} Has already done 10 parkruns. No new parkrun added.")
-        print()
+        print(f"{name.upper()} Has done 10+ parkruns. No new parkrun added.")
         return
         
     numParkruns += 1
@@ -181,14 +192,12 @@ def add_parkrun_to_file(name, date):
     print()
 
 
-def createNewPerson(name):
+def create_new_person(name):
     print("------------------------------------------------------")
     print(f"CREATE FILE {name.upper()}.")
-    
-    validAges = ["MU17", "M17-39", "M40-44", "M45-49", "M50-54", "M55-59", "M60-64", "M65+",
-                 "WU17", "W17-34", "W35-39", "W40-44", "W45-49", "W50-54", "W55-59", "W60-64", "W65+"]
+
     ageCat = ""
-    while ageCat not in validAges:
+    while ageCat not in VALID_AGES:
         ageCat = input("Age category: ").upper()
     
     file_lines = ["-----------\n",
@@ -198,7 +207,7 @@ def createNewPerson(name):
                   "RACES:\n"]
 
     if ageCat in ["MU17", "WU17"]:
-        file_lines.insert(3, "PARKRUNS: 0")
+        file_lines.insert(3, "PARKRUNS: 0\n")
 
     write_filelines(name, file_lines)
     print(f"FILE CREATED for {name.upper()}")
