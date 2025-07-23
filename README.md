@@ -8,6 +8,7 @@ I started this project bespoke for my dad to help him calculate the points for D
 
 
 --- DESCRIPTION ---
+
 The way these awards work is that for certain distances there are specific times for each age category (called standards) that achieve different numbers of points.
 Previously we had a speadsheet set up which automatically calculates the points from peoples times, but this was a slow process and frequently the laptop crashed, losing data.
 
